@@ -1,15 +1,15 @@
 const RestaurantsCard = (props) => {
-  const { resList } = props;
-  //   const {
-  //     cloudinaryImageId,
-  //     Name,
-  //     avgRating,
-  //     cuisines,
-  //     costForTwo,
-  //     deliveryTime,
-  //   } = resData;
+  const { ResList } = props;
+  const {
+    cloudinaryImageId,
+    Name,
+    avgRating,
+    cuisines,
+    costForTwo,
+    deliveryTime,
+  } = ResList;
 
-  console.log(props.resList);
+  console.log(ResList);
 
   return (
     <div className="res-cards" style={{ backgroundColor: "f0f0f0" }}>
@@ -24,7 +24,7 @@ const RestaurantsCard = (props) => {
       <h1>{Name}</h1>
       <h3>{cuisines.join(", ")}</h3>
       <h3>
-        {costForTwo / 100} For TWO {deliveryTime} Minutes
+        {costForTwo} {deliveryTime} Minutes
       </h3>
       <h3>{avgRating} stars</h3>
     </div>
