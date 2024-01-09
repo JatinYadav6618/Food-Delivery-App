@@ -1,0 +1,9 @@
+.res-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.res-cards img {
+  height: 128px;
+  width: 128px;
+}
