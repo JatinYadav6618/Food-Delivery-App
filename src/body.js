@@ -1,9 +1,25 @@
-import { useState } from "react";
-import ResList from "./res-list.js";
+import { useEffect, useState } from "react";
 import RestaurantsCard from "./Restaurantcard.js";
 
 const Body = () => {
-  const [reslist, setResList] = useState(ResList);
+  const [reslist, setResList] = useState([]);
+
+  useEffect(() => {
+    fetchdata();
+  }, []);
+
+  const fetchdata = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6034494&lng=77.1835983&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const json = await data.json();
+    console.log(json);
+    setResList(
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+    );
+  };
+
   return (
     <div className="body">
       <div className="filter">

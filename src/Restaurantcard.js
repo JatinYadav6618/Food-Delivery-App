@@ -1,15 +1,8 @@
 const RestaurantsCard = (props) => {
   const { ResList } = props;
-  const {
-    cloudinaryImageId,
-    Name,
-    avgRating,
-    cuisines,
-    costForTwo,
-    deliveryTime,
-  } = ResList;
+  const { cloudinaryImageId, name, avgRating, cuisines, costForTwo } = ResList;
 
-  console.log(ResList);
+  //   console.log(ResList);
 
   return (
     <div className="res-cards" style={{ backgroundColor: "f0f0f0" }}>
@@ -21,12 +14,10 @@ const RestaurantsCard = (props) => {
           cloudinaryImageId
         }
       ></img>
-      <h1>{Name}</h1>
+      <h1>{name}</h1>
       <h3>{cuisines.join(", ")}</h3>
-      <h3>
-        {costForTwo} {deliveryTime} Minutes
-      </h3>
-      <h3>{avgRating} stars</h3>
+      <h3>{costForTwo}</h3>
+      <h3>{avgRating} stars </h3>
     </div>
   );
 };
