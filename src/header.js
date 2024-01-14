@@ -1,4 +1,4 @@
-import myLogo from "../res/foodlogo.jpeg";
+import myLogo from "../res/foodlogo.png";
 
 const Header = () => {
   return (

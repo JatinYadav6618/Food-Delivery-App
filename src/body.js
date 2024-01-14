@@ -3,18 +3,21 @@ import RestaurantsCard from "./Restaurantcard.js";
 
 const Body = () => {
   const [reslist, setResList] = useState([]);
+  const [fetchedResList, setFetchedResList] = useState(null); // state var for kepping orignal list of restaurants
 
   useEffect(() => {
     fetchdata();
   }, []);
-
   const fetchdata = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6034494&lng=77.1835983&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
 
     const json = await data.json();
-    console.log(json);
+
+    setFetchedResList(
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+    );
     setResList(
       json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
@@ -34,7 +37,12 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
-        <button onClick={() => setResList(ResList)}>Reset</button>
+        <button
+          className="filter-btn"
+          onClick={() => setResList(fetchedResList)}
+        >
+          Reset
+        </button>
       </div>
       <div className="res-container">
         {reslist.map((restaurant) => (
