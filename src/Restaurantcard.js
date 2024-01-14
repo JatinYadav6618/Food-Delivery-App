@@ -5,19 +5,19 @@ const RestaurantsCard = (props) => {
   //   console.log(ResList);
 
   return (
-    <div className="res-cards" style={{ backgroundColor: "f0f0f0" }}>
+    <div className="res-cards">
       <img
-        className="res-logo"
+        className="res-logo res-card-item"
         alt="res-logo "
         src={
           "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
           cloudinaryImageId
         }
       ></img>
-      <h1>{name}</h1>
-      <h3>{cuisines.join(", ")}</h3>
-      <h3>{costForTwo}</h3>
-      <h3>{avgRating} stars </h3>
+      <h2 className="res-card-item res-name">{name}</h2>
+      <h5 className="res-card-item">{cuisines.join(", ")}</h5>
+      <h4 className="res-card-item">{costForTwo}</h4>
+      <h4 className="res-card-item">{avgRating} stars </h4>
     </div>
   );
 };
