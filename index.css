@@ -23,6 +23,7 @@
 .shimmer-item {
   height: 200px;
   width: 270px;
+  margin: 20px;
   background-color: #f0f0f0;
 }
 .nav-items {

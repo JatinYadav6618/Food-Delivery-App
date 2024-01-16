@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import RestaurantsCard from "./Restaurantcard.js";
-import shimmer from "./shimmer.js";
+import Shimmer from "./shimmer.js";
 
 const Body = () => {
   const [reslist, setResList] = useState([]);
@@ -27,7 +27,7 @@ const Body = () => {
   };
 
   return reslist.length === 0 ? (
-    <shimmer />
+    <Shimmer />
   ) : (
     <div className="body">
       <div className="search-container">
