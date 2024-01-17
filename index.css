@@ -70,3 +70,12 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+.userdetail {
+  border: 1px solid #e46d47;
+  background-color: #f0f0f0;
+  height: 250px;
+  padding: auto;
+  margin: auto;
+  width: 250px;
+}
