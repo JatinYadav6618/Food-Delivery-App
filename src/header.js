@@ -22,7 +22,11 @@ const Header = () => {
               Restaurants
             </Link>
           </li>
-          <li className="n-items">Cart</li>
+          <li className="n-items">
+            <Link to={"/cart "} className="n-item">
+              Cart{" "}
+            </Link>
+          </li>
           <li className="n-items">
             <Link className="n-item" to="/about">
               About Us

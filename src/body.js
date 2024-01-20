@@ -34,23 +34,22 @@ const Body = () => {
       <div className="search-container">
         <input
           type="text"
+          placeholder="Search"
           className="searchtext"
           value={searchbtn}
           onChange={(e) => {
             setsearchbtn(e.target.value);
+            console.log(searchbtn);
+            if (searchbtn.length === 1) {
+              setResList(demolist);
+            } else {
+              const filteredlist = reslist.filter((res) =>
+                res.info.name.toLowerCase().includes(searchbtn.toLowerCase())
+              );
+              setResList(filteredlist);
+            }
           }}
         />
-        <button
-          className="search"
-          onClick={() => {
-            const filteredlist = reslist.filter((res) =>
-              res.info.name.toLowerCase().includes(searchbtn.toLowerCase())
-            );
-            setResList(filteredlist);
-          }}
-        >
-          search
-        </button>
       </div>
       <div className="filter">
         <button
@@ -73,7 +72,7 @@ const Body = () => {
           <Link
             className="res-details"
             key={restaurant.info.id}
-            to={"/restaurant/" + restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
           >
             <RestaurantsCard
               key={restaurant.info.id}
@@ -81,7 +80,6 @@ const Body = () => {
             />
           </Link>
         ))}
-        {}
       </div>
     </div>
   );
