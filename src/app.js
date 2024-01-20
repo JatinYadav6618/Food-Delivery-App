@@ -7,7 +7,8 @@ import About from "./about.js";
 import Contact from "./contact.js";
 import Error from "./error.js";
 import ResMenu from "./resmenu.js";
-
+import Restaurant from "./restaurant.js";
+import cart from "./cart.js";
 const App = () => {
   return (
     <div className="app-container">
@@ -33,6 +34,10 @@ const AppRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "restaurant",
+        element: <Restaurant />,
       },
       {
         path: "/restaurants/:resId",

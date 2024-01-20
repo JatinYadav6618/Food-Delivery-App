@@ -1,5 +1,5 @@
 import { useState } from "react";
-import myLogo from "../res/foodlogo.jpeg";
+import myLogo from "../res/images.png";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -13,15 +13,25 @@ const Header = () => {
       <div className="nav-item">
         <ul className="nav-items">
           <li className="n-items">
-            <Link to="/">Home</Link>
+            <Link to="/" className="n-item">
+              Home
+            </Link>
           </li>
-          <li className="n-items">Restaurants</li>
+          <li className="n-items">
+            <Link className="n-item" to="/restaurant">
+              Restaurants
+            </Link>
+          </li>
           <li className="n-items">Cart</li>
           <li className="n-items">
-            <Link to="/about">About Us</Link>
+            <Link className="n-item" to="/about">
+              About Us
+            </Link>
           </li>
           <li className="n-items">
-            <Link to="/contact">Contact Us</Link>
+            <Link to="/contact" className="n-item">
+              Contact Us
+            </Link>
           </li>
           <button
             className="login-btn"

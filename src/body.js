@@ -68,10 +68,10 @@ const Body = () => {
           Reset
         </button>
       </div>
-
       <div className="res-container">
         {reslist.map((restaurant) => (
           <Link
+            className="res-details"
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >

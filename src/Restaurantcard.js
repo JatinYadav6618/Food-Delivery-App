@@ -14,10 +14,12 @@ const RestaurantsCard = (props) => {
           cloudinaryImageId
         }
       ></img>
-      <h2 className="res-card-item res-name">{name}</h2>
-      <h5 className="res-card-item">{cuisines.join(", ")}</h5>
-      <h4 className="res-card-item">{costForTwo}</h4>
-      <h4 className="res-card-item">{avgRating} stars </h4>
+      <div className="res-info">
+        <h2 className="res-card-item res-name">{name}</h2>
+        <h5 className="res-card-item">{cuisines.join(", ")}</h5>
+        <h6 className="res-card-item">{costForTwo}</h6>
+        <h6 className="res-card-item">{avgRating} stars </h6>
+      </div>
     </div>
   );
 };
