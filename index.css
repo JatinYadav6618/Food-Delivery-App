@@ -282,6 +282,7 @@
 .Menu-container img {
   width: 150px;
   height: 100px;
+  border-radius: 9px;
   grid-area: 2/6/4/-1;
 }
 .Menu-container h2 {

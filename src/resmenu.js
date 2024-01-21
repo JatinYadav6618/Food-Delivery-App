@@ -4,8 +4,10 @@ import { Link, useParams } from "react-router-dom";
 import RestaurantMenu from "./menuCard";
 
 const ResMenu = () => {
-  let [resinfo, setresinfo] = useState(null);
+  const [resinfo, setresinfo] = useState(null);
+  const [demoResInfo, setDemoResInfo] = useState(null);
   const menuid = useParams();
+  const [searchBtn, setSearchBtn] = useState("");
 
   useEffect(() => {
     fetchMenu();
@@ -18,11 +20,15 @@ const ResMenu = () => {
         "&catalog_qa=undefined&submitAction=ENTER"
     );
     const json = await data.json();
-    console.log(
+    // console.log(
+    //   json.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+    //     ?.card?.itemCards
+    // );
+    setresinfo(
       json.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
         ?.card?.itemCards
     );
-    setresinfo(
+    setDemoResInfo(
       json.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
         ?.card?.itemCards
     );
@@ -32,8 +38,28 @@ const ResMenu = () => {
     <Shimmer />
   ) : (
     <div className="menu">
+      <div className="search-container">
+        <input
+          className="text"
+          placeholder="Search Dish"
+          value={searchBtn}
+          onChange={(e) => {
+            setSearchBtn(e.target.value);
+            console.log(searchBtn);
+            if (searchBtn.length === 1) {
+              setresinfo(demoResInfo);
+            } else {
+              const filteredMenu = resinfo.filter((res) =>
+                res.card.info.name
+                  .toLowerCase()
+                  .includes(searchBtn.toLowerCase())
+              );
+              setresinfo(filteredMenu);
+            }
+          }}
+        />
+      </div>
       {resinfo.map((menu) => (
-        // <Link className="menuDetails" key={menu.card.info.id} to={}
         <RestaurantMenu
           key={menu.card.info.id}
           restaurantMenu={menu.card.info}

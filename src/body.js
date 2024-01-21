@@ -34,7 +34,7 @@ const Body = () => {
       <div className="search-container">
         <input
           type="text"
-          placeholder="Search"
+          placeholder="Search Restaurant"
           className="searchtext"
           value={searchbtn}
           onChange={(e) => {
