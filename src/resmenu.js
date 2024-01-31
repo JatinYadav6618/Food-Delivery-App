@@ -1,38 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Shimmer from "./shimmer";
 import { Link, useParams } from "react-router-dom";
 import RestaurantMenu from "./menuCard";
+import useRestaurantMenu from "./util/useRestaurantMenu";
 
 const ResMenu = () => {
-  const [resinfo, setresinfo] = useState(null);
-  const [demoResInfo, setDemoResInfo] = useState(null);
-  const menuid = useParams();
+  const { resId } = useParams();
   const [searchBtn, setSearchBtn] = useState("");
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6034494&lng=77.1835983&restaurantId=" +
-        menuid.resId +
-        "&catalog_qa=undefined&submitAction=ENTER"
-    );
-    const json = await data.json();
-    // console.log(
-    //   json.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-    //     ?.card?.itemCards
-    // );
-    setresinfo(
-      json.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-        ?.card?.itemCards
-    );
-    setDemoResInfo(
-      json.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-        ?.card?.itemCards
-    );
-  };
+  const resinfo = useRestaurantMenu(resId);
 
   return resinfo === null ? (
     <Shimmer />
@@ -47,24 +22,26 @@ const ResMenu = () => {
             setSearchBtn(e.target.value);
             console.log(searchBtn);
             if (searchBtn.length === 1) {
-              setresinfo(demoResInfo);
+              resinfo = useRestaurantMenu(resId);
             } else {
               const filteredMenu = resinfo.filter((res) =>
                 res.card.info.name
                   .toLowerCase()
                   .includes(searchBtn.toLowerCase())
               );
-              setresinfo(filteredMenu);
+              resinfo = filteredMenu;
             }
           }}
         />
       </div>
-      {resinfo.map((menu) => (
+
+      {/* {resinfo.map((menu) => (
         <RestaurantMenu
           key={menu.card.info.id}
           restaurantMenu={menu.card.info}
         />
-      ))}
+      ))} */}
+      {console.log(resinfo)}
     </div>
   );
 };

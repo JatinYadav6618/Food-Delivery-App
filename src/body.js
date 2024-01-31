@@ -18,14 +18,29 @@ const Body = () => {
     );
 
     const json = await data.json();
+    // card": {
+    //   "card": {
+    //     "@type": "type.googleapis.com/swiggy.gandalf.widgets.v2.GridWidget",
+    //     "layout": {
+    //       "columns": 4
+    //     },
+    //     "id": "restaurant_grid_listing",
+    //     "gridElements": {
     // console.log(json);
+    let restaurantCards;
+    json.data.cards.map((card) => {
+      if (card.card.card.id === "restaurant_grid_listing") {
+        restaurantCards = card;
+      }
+    });
     setResList(
-      json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      restaurantCards?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setdemolist(
-      json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      restaurantCards?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  // console.log(reslist);
 
   return reslist.length === 0 ? (
     <Shimmer />
