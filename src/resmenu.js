@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Shimmer from "./shimmer";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import RestaurantMenu from "./menuCard";
 import useRestaurantMenu from "./util/useRestaurantMenu";
 
@@ -8,11 +8,46 @@ const ResMenu = () => {
   const { resId } = useParams();
   const [searchBtn, setSearchBtn] = useState("");
   const resinfo = useRestaurantMenu(resId);
+  const [showIndex, setShowIndex] = useState(null);
+  console.log(resinfo);
+  if (resinfo.length < 1) {
+    <Shimmer />;
+  }
+  console.log(typeof resinfo);
+  // .find((x) => x.groupedCard)
+  //     ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
+  //     ?.filter(
+  //       (x) =>
+  //         x["@type"] ==
+  //         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  //     )
+  //     ?.map((x) => x.itemCards)
+  //     .flat(Infinity)
+  //     .map((x) => x.card?.info)
 
-  return resinfo === null ? (
-    <Shimmer />
-  ) : (
+  const { name, cuisines, costForTwoMessage } =
+    resinfo?.cards[0]?.card?.card?.info;
+
+  // const { itemCards } = resinfo?.cards.find((x) => x.groupedCard)?.groupedCard
+  //   ?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+
+  // const categories = resinfo?.cards
+  //   .find((x) => x.groupedCard)
+  //   ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
+  //   ?.filter(
+  //     (x) =>
+  //       x["@type"] ==
+  //       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  //   );
+  console.log(resinfo);
+  console.log(name, cuisines);
+  return (
     <div className="menu">
+      {/* <div className="restaurantName">
+        <h2>{name}</h2>
+        <span>{cuisines}</span>
+        <span>{costForTwoMessage}</span>
+      </div> */}
       <div className="search-container">
         <input
           className="text"
@@ -37,11 +72,11 @@ const ResMenu = () => {
 
       {/* {resinfo.map((menu) => (
         <RestaurantMenu
-          key={menu.card.info.id}
-          restaurantMenu={menu.card.info}
+          key={category?.card?.card.title}
+          restaurantMenu={category?.card?.card}
         />
       ))} */}
-      {console.log(resinfo)}
+      {/* {console.log(resinfo)} */}
     </div>
   );
 };

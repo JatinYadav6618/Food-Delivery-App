@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "rm -rf .parcel-cache && rm -rf dist && parcel index.html",
+    "start": "rd /s /q .parcel-cache && rd /s /q dist && parcel index.html",
     "test": "jest"
   },
   "author": "jatin",
