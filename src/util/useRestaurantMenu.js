@@ -13,7 +13,7 @@ function useRestaurantMenu(menuid) {
         menuid
     );
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     // const menuItemsData =
     //   json?.data?.cards
     //     .find((x) => x.groupedCard)
@@ -30,7 +30,7 @@ function useRestaurantMenu(menuid) {
     // console.log(menuItemsData);
 
     // setMenuItems(menuItemsData);
-    setMenuItems(json?.data);
+    setMenuItems(json?.data?.cards);
   };
   return menuItems;
 }
