@@ -1,5 +1,6 @@
 const RestaurantsCard = (props) => {
   const { ResList } = props;
+  // console.log(ResList);
   const { cloudinaryImageId, name, avgRating, cuisines, costForTwo } = ResList;
 
   //   console.log(ResList);
@@ -22,6 +23,17 @@ const RestaurantsCard = (props) => {
       </div>
     </div>
   );
+};
+
+export const withPromotedLable = (RestaurantsCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label>Promoted</label>
+        <RestaurantsCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantsCard;
