@@ -1,9 +1,14 @@
 import { useState } from "react";
 import myLogo from "../res/images.png";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [loginbtn, setloginbtn] = useState("Login");
+
+  const cartItems = useSelector((store) => store.cart.items);
+
+  // console.log(cartItems);
 
   return (
     <div className="header">
@@ -17,14 +22,14 @@ const Header = () => {
               Home
             </Link>
           </li>
-          <li className="n-items">
+          {/* <li className="n-items">
             <Link className="n-item" to="/restaurant">
               Restaurants
             </Link>
-          </li>
+          </li> */}
           <li className="n-items">
-            <Link to={"/cart "} className="n-item">
-              Cart{" "}
+            <Link to={"/cart"} className="n-item">
+              Cart ({cartItems.length} items)
             </Link>
           </li>
           <li className="n-items">

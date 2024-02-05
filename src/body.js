@@ -90,7 +90,7 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            {console.log(restaurant.info)}
+            {/* {console.log(restaurant.info)} */}
             {restaurant.info.promoted ? (
               <promotedRestaurant
                 key={restaurant.info.id}

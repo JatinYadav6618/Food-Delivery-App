@@ -1,12 +1,18 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "./util/cartSlice";
+
 const RestaurantMenu = (accordianItem) => {
   // const { restaurantMenu } = props;
-  console.log(accordianItem);
-  const { category, description, imageId, name, ratings, price } =
-    accordianItem.items;
+  // console.log(accordianItem);
+  const { description, imageId, name, ratings, price } = accordianItem.items;
   // const { defaultPrice } =
   //   accordianItem.items.variantsV2.pricingModels[0].price;
 
-  console.log(name);
+  // console.log(name);
+  const dispatch = useDispatch();
+  const handleAddItems = (item) => {
+    dispatch(addItem(item));
+  };
 
   return (
     <div className="Menu-container">
@@ -15,7 +21,7 @@ const RestaurantMenu = (accordianItem) => {
       </h2>
       <div className="itemImg">
         <div className="imgbtn">
-          <button>Add +</button>
+          <button onClick={() => handleAddItems(accordianItem)}>Add +</button>
         </div>
         <img
           className="menuitem menuimage"
@@ -26,7 +32,6 @@ const RestaurantMenu = (accordianItem) => {
         />
       </div>
       <h4 className="menuitem menudes">{description}</h4>
-      {/* <h4 className="menuitem menucat">{category}</h4> */}
       <h5 className="menuitem menurating">
         {ratings.aggregatedRating.rating} Stars
       </h5>
