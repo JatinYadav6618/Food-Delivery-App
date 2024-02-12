@@ -11,6 +11,7 @@ import Restaurant from "./restaurant.js";
 import Cart from "./cart.js";
 import { Provider } from "react-redux";
 import appStore from "./util/appStore.js";
+import Login from "./login.js";
 const App = () => {
   return (
     <Provider store={appStore}>
@@ -39,10 +40,10 @@ const AppRouter = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-      // {
-      //   path: "/restaurant",
-      //   element: <Restaurant />,
-      // },
+      {
+        path: "/login",
+        element: <Login />,
+      },
       {
         path: "/cart",
         element: <Cart />,

@@ -10,12 +10,17 @@
 /* header */
 
 .header {
-  background-color: transparent;
+  background-color: white;
   box-shadow: 0px 0px 8px #02060c99;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 7px;
+  position: sticky;
+  top: 0;
+  /* left: 0; */
+  z-index: 20;
+  /* align-self: flex-start; */
 }
 
 .logo-img {
@@ -50,8 +55,13 @@
 .n-item:hover {
   color: #e46d47;
 }
+.n-items:active {
+  transform: translateY(3);
+  color: #f9470c;
+}
 .login-btn {
   width: 70px;
+  height: 50px;
   padding: 0px 10px;
   border-radius: 30%;
   border: 0px;
@@ -62,6 +72,11 @@
 }
 .login-btn:hover {
   background-color: #e46d47;
+}
+
+.login-btn:active {
+  transform: translateY(3);
+  color: #f9470c;
 }
 /* body */
 .body {
@@ -105,7 +120,7 @@
   color: #02060c6c;
   background-color: white;
   border: 2px solid #02060c6c;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 .filter-btn {
   margin-left: 14rem;
@@ -119,6 +134,10 @@
   box-shadow: 0px 0px 3px #02060c99;
   transform: translateY(-2);
   color: #e46d47;
+}
+.btn:active {
+  transform: translateY(3);
+  color: #f9470c;
 }
 
 /* restaurant cards  */
@@ -242,6 +261,11 @@
   box-shadow: 0px 0px 4px #02060c99;
   transform: translateY(2);
 }
+
+.userlike button:active {
+  transform: translateY(-4);
+  color: #f9470c;
+}
 .userdetail h3 {
   color: #02060c99;
 }
@@ -350,13 +374,18 @@
   border: 0px;
   border-radius: 30px;
   text-align: center;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
   margin-left: 3.2rem;
   margin-top: 5rem;
 }
 .imgbtn button:hover {
   background-color: #e46d47;
   transform: translateY(-2);
+}
+
+.imgbtn button:active {
+  transform: translateY(2);
+  background-color: #f9470c;
 }
 
 /* Cart  */
@@ -368,18 +397,39 @@
   margin: 20px;
   margin-bottom: 4px;
 }
+.cart button {
+  margin-right: 84rem;
+  padding-left: 5px;
+  padding-right: 5px;
+  /* margin: 15px; */
+  border-radius: 10px;
+  cursor: pointer;
+  color: #02060c6c;
+  background-color: white;
+  border: 2px solid #02060c6c;
+  transition: all 0.3s ease-in-out;
+}
+.cart button:hover {
+  color: #e46d47;
+  transform: translateY(-2);
+  box-shadow: 0px 0px 4px #02060c6c;
+}
+.cartitems {
+  margin: 10px 0px 10px 30rem;
+}
 
 .cartitemdetails {
   display: grid;
   /* text-align: center; */
-  margin: 0px auto;
+  margin: 10px auto;
   width: 55rem;
   background-color: #f0f0f0;
-  border-bottom: 1px solid #02060c6c;
-  margin-bottom: 10px;
+  /* border-bottom: 1px solid #02060c6c; */
+  /* margin-bottom: 10px; */
   box-shadow: 0px 0px 4px #02060c6c;
   grid-template-columns: auto auto auto auto auto auto auto auto;
   grid-template-rows: auto auto auto auto;
+  /* margin-top: 10px; */
 }
 .cartitemdetails img {
   width: 100px;
@@ -397,4 +447,83 @@
   margin: 10px;
   /* grid-column-start: 1;
   grid-column-end: 1; */
+}
+
+.cartitems {
+  color: #02060c99;
+  margin: 10px auto;
+  margin-left: 40rem;
+}
+
+/* Login Page  */
+
+.login {
+  display: flex;
+  flex-direction: row;
+}
+.funkyimg {
+  width: 40%;
+  /* height: %; */
+  object-fit: cover;
+  padding: 2rem 20px;
+  position: absolute;
+  top: 70;
+}
+
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  margin: 10rem auto;
+  /* align-items: center; */
+  justify-content: center;
+}
+.LoginForm input {
+  margin: 10px;
+  border: 0px;
+  padding: 5px;
+  border-bottom: 1px solid #02060c6c;
+  outline: none;
+  z-index: 10;
+  /* position: absolute;
+  z-index: 100; */
+  /* text-align: center; */
+}
+
+.LoginForm button {
+  width: 10rem;
+  text-align: center;
+  margin: 1rem auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: #02060c99;
+  border: 2px solid #02060c99;
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.LoginForm button:hover {
+  transform: translateY(-2);
+  background-color: #e46d47;
+}
+.newuser {
+  z-index: 10;
+  font-weight: lighter;
+  font-size: small;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+.newuser:hover {
+  color: #e46d47;
+}
+.LoginForm p {
+  color: red;
+  font-weight: lighter;
+  font-size: small;
+  z-index: 10;
+  padding: 1rem;
+  font-style: italic;
 }

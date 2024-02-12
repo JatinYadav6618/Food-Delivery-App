@@ -42,16 +42,18 @@ const Header = () => {
               Contact Us
             </Link>
           </li>
-          <button
-            className="login-btn"
-            onClick={() => {
-              loginbtn === "Login"
-                ? setloginbtn("Logout")
-                : setloginbtn("Login");
-            }}
-          >
-            {loginbtn}
-          </button>
+          <Link to={"/login"}>
+            <button
+              className=" login-btn"
+              onClick={() => {
+                loginbtn === "Login"
+                  ? setloginbtn("Logout")
+                  : setloginbtn("Login");
+              }}
+            >
+              {loginbtn}
+            </button>
+          </Link>
         </ul>
       </div>
     </div>
