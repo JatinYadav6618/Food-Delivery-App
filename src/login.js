@@ -3,7 +3,11 @@ import React, { useRef, useState } from "react";
 // import loginAnimation from "../res/loginAnimation.mp4";
 import funky from "../res/funky.jpg";
 import { Validate } from "./util/validate.js";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "./util/firebase.js";
 
 const Login = () => {
@@ -42,6 +46,11 @@ const Login = () => {
     }
   };
 
+  const handleGoogleAuth = async (e) => {
+    const provider = await new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  };
+
   const toggleRegistrationForm = () => {
     setLoginBtn(!loginbtn);
   };
@@ -64,6 +73,10 @@ const Login = () => {
             ? "New here! Register Now 📋"
             : "Already Registered Login Now 🚀"}
         </p>
+
+        <button className="googlesignin" onClick={handleGoogleAuth}>
+          Sign in with Google
+        </button>
       </form>
     </div>
   );

@@ -527,3 +527,12 @@
   padding: 1rem;
   font-style: italic;
 }
+
+/* google authentication */
+
+.googlesignin {
+  border: 0px;
+  font-size: small;
+  font-weight: bold;
+  color: #02060c99;
+}
